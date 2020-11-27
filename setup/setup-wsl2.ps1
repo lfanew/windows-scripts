@@ -22,7 +22,7 @@ Start-BitsTransfer -Source $WSL_KERNEL_URL -Destination $WSL_KERNEL_INSTALLER
 # Create RunOnce Entry
 $runonce_commands = @("start /wait msiexec.exe /i `"$WSL_KERNEL_INSTALLER`" /qn")
 $runonce_commands += "wsl --set-default-version 2"
-$runonce_commands | Out-File $RUNONCE_BAT_PATH -Encoding utf8
+$runonce_commands | Out-File $RUNONCE_BAT_PATH -Encoding ascii
 
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" `
     -Name "WSL2" -Value $RUNONCE_BAT_PATH -PropertyType String
