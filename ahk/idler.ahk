@@ -1,5 +1,7 @@
 IDLING := False
 
+MsgBox, Press CTRL + Pause/Break key to toggle idling.
+
 While(True) {
     Random, delay, 100, 5000
     Sleep, delay
@@ -31,6 +33,8 @@ While(True) {
 ^CtrlBreak::
     IDLING := !IDLING
     if (IDLING) {
-        MsgBox, Press OK to start idling...
+        TrayTip, Idler, Idling started.
+    } else {
+        TrayTip, Idler, Idling stopped.
     }
 return
